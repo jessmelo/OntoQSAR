@@ -1475,7 +1475,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses"/>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_target"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
             </owl:Restriction>
