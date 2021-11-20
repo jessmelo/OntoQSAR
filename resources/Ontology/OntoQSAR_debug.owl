@@ -25,7 +25,7 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#algorithm_used_by -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#algorithm_used_by">
-        <rdfs:subPropertyOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_used_by"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_algorithm"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#QSAR_descriptor"/>
     </owl:ObjectProperty>
@@ -43,7 +43,7 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#contais_descriptor -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#contais_descriptor">
-        <rdfs:subPropertyOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#contains"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </owl:ObjectProperty>
     
 
@@ -70,15 +70,6 @@
     
 
 
-    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#is_used_by -->
-
-    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_used_by">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#is_validated_by -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_validated_by">
@@ -91,23 +82,17 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#target_used_by -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#target_used_by">
-        <rdfs:subPropertyOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_used_by"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_target"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#uses -->
-
-    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#uses"/>
-    
-
-
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#uses_algorithm -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_algorithm">
-        <rdfs:subPropertyOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Algorithm"/>
     </owl:ObjectProperty>
     
@@ -116,7 +101,7 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#uses_target -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_target">
-        <rdfs:subPropertyOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
     </owl:ObjectProperty>
     
@@ -1257,12 +1242,6 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Algorithm">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_used_by"/>
-                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#QSAR_descriptor"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A plan specification which describes inputs, output of mathematical functions as well as workflow of execution for achieving an predefined objective. Algorithms are realized usually by means of implementation as computer programs for execution by automata.</rdfs:comment>
         <rdfs:label xml:lang="en">Algorithm</rdfs:label>
         <rdfs:label xml:lang="pt">Algoritmo</rdfs:label>
@@ -1573,12 +1552,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_validated_by"/>
                 <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Validation"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses"/>
-                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Algorithm"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
