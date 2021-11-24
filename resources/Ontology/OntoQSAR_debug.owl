@@ -32,6 +32,16 @@
     
 
 
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#composes -->
+
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#composes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_composed_by"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#contains_descriptor -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#contains_descriptor">
@@ -51,7 +61,18 @@
 
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#contains_qsar_descriptor -->
 
-    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#contains_qsar_descriptor"/>
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#contains_qsar_descriptor">
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#QSAR_descriptor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#derives -->
+
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#derives">
+        <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_derived_from"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+    </owl:ObjectProperty>
     
 
 
@@ -73,6 +94,7 @@
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_composed_by">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Functional_Group_Descriptor"/>
     </owl:ObjectProperty>
     
 
@@ -89,6 +111,7 @@
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_validated_by">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#validates"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Validation"/>
     </owl:ObjectProperty>
     
@@ -122,11 +145,11 @@
     
 
 
-    <!-- http://www.w3.org/2002/07/owl#bottomObjectProperty -->
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#validates -->
 
-    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#bottomObjectProperty">
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#validates">
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#QSAR_descriptor"/>
-    </rdf:Description>
+    </owl:ObjectProperty>
     
 
 
@@ -1257,6 +1280,8 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Absorption">
         <rdfs:subClassOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacokinetics"/>
+        <rdfs:label xml:lang="en">Absorption</rdfs:label>
+        <rdfs:label xml:lang="pt">Absorção</rdfs:label>
     </owl:Class>
     
 
@@ -1404,6 +1429,8 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Excretion">
         <rdfs:subClassOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacokinetics"/>
+        <rdfs:label xml:lang="en">Excretion</rdfs:label>
+        <rdfs:label xml:lang="pt">Excreção</rdfs:label>
     </owl:Class>
     
 
@@ -1428,6 +1455,8 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Functional_Group_Descriptor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="pt">Descritor de Grupo Funcional</rdfs:label>
+        <rdfs:label xml:lang="en">Functional Group Descriptor</rdfs:label>
     </owl:Class>
     
 
@@ -1528,6 +1557,8 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Metabolism">
         <rdfs:subClassOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacokinetics"/>
+        <rdfs:label xml:lang="en">Metabolism</rdfs:label>
+        <rdfs:label xml:lang="pt">Metabolismo</rdfs:label>
     </owl:Class>
     
 
@@ -1562,6 +1593,8 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacokinetics">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="pt">Farmacocinética</rdfs:label>
+        <rdfs:label xml:lang="en">Pharmacokinetics</rdfs:label>
     </owl:Class>
     
 
@@ -1609,6 +1642,8 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Quantum_Chemistry_Computational_Method">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="pt">Método Computacional de Química Quântica</rdfs:label>
+        <rdfs:label xml:lang="en">Quantum Chemistry Computacional Method</rdfs:label>
     </owl:Class>
     
 
@@ -1637,6 +1672,8 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Tissue_Distribution">
         <rdfs:subClassOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacokinetics"/>
+        <rdfs:label xml:lang="pt">Distribuição de Tecido</rdfs:label>
+        <rdfs:label xml:lang="en">TIssue Distribution</rdfs:label>
     </owl:Class>
     
 
@@ -1645,6 +1682,8 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Toxicity">
         <rdfs:subClassOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacokinetics"/>
+        <rdfs:label xml:lang="pt">Toxicidade</rdfs:label>
+        <rdfs:label xml:lang="en">Toxicity</rdfs:label>
     </owl:Class>
     
 
