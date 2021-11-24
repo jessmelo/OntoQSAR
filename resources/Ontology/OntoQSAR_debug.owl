@@ -79,9 +79,9 @@
     
 
 
-    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity -->
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity_value -->
 
-    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity">
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity_value">
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity"/>
     </owl:ObjectProperty>
     
@@ -124,7 +124,6 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#uses_algorithm -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_algorithm">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Algorithm"/>
     </owl:ObjectProperty>
     
@@ -1448,6 +1447,12 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Functional_Group_Descriptor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#composes"/>
+                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="pt">Descritor de Grupo Funcional</rdfs:label>
         <rdfs:label xml:lang="en">Functional Group Descriptor</rdfs:label>
     </owl:Class>
@@ -1498,7 +1503,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity"/>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity_value"/>
                 <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
