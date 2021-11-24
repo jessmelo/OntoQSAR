@@ -1720,6 +1720,12 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Validation">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#validates"/>
+                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#QSAR_descriptor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">Validation</rdfs:label>
         <rdfs:label xml:lang="pt">Validação</rdfs:label>
     </owl:Class>
