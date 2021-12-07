@@ -76,26 +76,21 @@
     
 
 
-    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#derives -->
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#derives_inhibitor -->
 
-    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#derives">
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#derives_inhibitor">
         <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_derived_from"/>
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Assay_method"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_author -->
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_activity -->
 
-    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_author">
-        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Publication"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity_value -->
-
-    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity_value">
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_activity">
+        <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_activity_of"/>
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity"/>
     </owl:ObjectProperty>
     
@@ -104,6 +99,16 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_inhibitor -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_inhibitor">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacophoric_Group"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#is_activity_of -->
+
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_activity_of">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
     </owl:ObjectProperty>
     
@@ -120,7 +125,17 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#is_derived_from -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_derived_from">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Assay_method"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#is_target_of -->
+
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_target_of">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
     </owl:ObjectProperty>
     
 
@@ -138,6 +153,7 @@
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#target_used_by">
         <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_target"/>
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
     </owl:ObjectProperty>
     
@@ -154,6 +170,7 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#uses_target -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_target">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
     </owl:ObjectProperty>
     
@@ -1329,8 +1346,16 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Assay_method">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#derives_inhibitor"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The methods required to perform typical screening assay. These include the assay design methods (to generate a detectable signal) and assay supporting methods. Assay methods include laboratory methods. Computational methods are not currently categorized as assay methods, although some may also be used to process the assay measurement results.</rdfs:comment>
         <rdfs:label xml:lang="en">Assay method</rdfs:label>
-        <rdfs:label xml:lang="pt">Método de ensaio</rdfs:label>
+        <rdfs:label xml:lang="pt">Teste experimental</rdfs:label>
     </owl:Class>
     
 
@@ -1354,8 +1379,15 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity -->
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_activity_of"/>
+                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Biological activity is “the capacity of a specific molecular entity to achieve a defined biological effect” on a target (Jackson et al. 2007). It is measured in terms of potency or the concentration of the molecular entity needed to produce the effect (Pelikan 2004). A biological activity is determined by means of a biological assay. Source: https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-9863-7_1337</rdfs:comment>
         <rdfs:label xml:lang="pt">Atividade biológica</rdfs:label>
-        <rdfs:label xml:lang="en">Biological Activity</rdfs:label>
+        <rdfs:label xml:lang="en">Biological activity</rdfs:label>
     </owl:Class>
     
 
@@ -1364,6 +1396,12 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_target_of"/>
+                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="pt">Alvo biológico</rdfs:label>
         <rdfs:label xml:lang="en">Biological target</rdfs:label>
     </owl:Class>
@@ -1400,6 +1438,7 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Diagnosis">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">In pathology, the process of distinguishing one disease from another. The determination of a disease from its signs, symptoms, etiology, pathogenesis, physiopathology, morphopathology, etc. Source: https://link.springer.com/referenceworkentry/10.1007/0-306-48380-7_1218</rdfs:comment>
         <rdfs:label xml:lang="en">Diagnosis</rdfs:label>
         <rdfs:label xml:lang="pt">Diagnóstico</rdfs:label>
     </owl:Class>
@@ -1525,12 +1564,6 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#has_bio_activity_value"/>
-                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_composed_by"/>
                 <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Functional_Group_Descriptor"/>
             </owl:Restriction>
@@ -1553,6 +1586,13 @@
                 <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#belongs_to"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacophoric_Group"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_activity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>A substance that diminishes the rate of a chemical reaction.</rdfs:comment>
