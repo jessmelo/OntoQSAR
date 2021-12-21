@@ -117,6 +117,7 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#is_composed_by -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_composed_by">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Functional_Group_Descriptor"/>
     </owl:ObjectProperty>
     
@@ -131,11 +132,12 @@
     
 
 
-    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#is_target_of -->
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#is_mentioned_in -->
 
-    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_target_of">
-        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
-        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_mentioned_in">
+        <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#mentions"/>
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Publication"/>
     </owl:ObjectProperty>
     
 
@@ -144,7 +146,17 @@
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#is_validated_by">
         <owl:inverseOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#validates"/>
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#QSAR_descriptor"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Validation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#mentions -->
+
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#mentions">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Publication"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
     </owl:ObjectProperty>
     
 
@@ -179,6 +191,7 @@
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#validates -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#validates">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Validation"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#QSAR_descriptor"/>
     </owl:ObjectProperty>
     
@@ -1398,7 +1411,7 @@
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_target_of"/>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#target_used_by"/>
                 <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1576,6 +1589,13 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#is_mentioned_in"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Publication"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#uses_target"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
@@ -1687,6 +1707,12 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Publication">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#mentions"/>
+                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">Publication</rdfs:label>
         <rdfs:label xml:lang="pt">Publicação</rdfs:label>
     </owl:Class>
@@ -1710,6 +1736,8 @@
                 <owl:onClass rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Algorithm"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label xml:lang="pt">Descritor QSAR</rdfs:label>
+        <rdfs:label xml:lang="en">QSAR descriptor</rdfs:label>
     </owl:Class>
     
 
