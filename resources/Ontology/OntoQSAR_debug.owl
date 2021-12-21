@@ -86,6 +86,15 @@
     
 
 
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#describes -->
+
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#describes">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Chemical_Descriptor"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_activity -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_activity">
@@ -101,6 +110,15 @@
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_target">
         <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Diagnosis"/>
         <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_chemical_descriptor -->
+
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_chemical_descriptor">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Quantum_Chemistry_Computational_Method"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Chemical_Descriptor"/>
     </owl:ObjectProperty>
     
 
@@ -1442,6 +1460,12 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Chemical_Descriptor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#describes"/>
+                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">Chemical descriptor</rdfs:label>
         <rdfs:label xml:lang="pt">Descritor Químico</rdfs:label>
     </owl:Class>
@@ -1761,6 +1785,12 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Quantum_Chemistry_Computational_Method">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#has_chemical_descriptor"/>
+                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Chemical_Descriptor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="pt">Método Computacional de Química Quântica</rdfs:label>
         <rdfs:label xml:lang="en">Quantum Chemistry Computacional Method</rdfs:label>
     </owl:Class>
