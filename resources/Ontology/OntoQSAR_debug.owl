@@ -96,6 +96,15 @@
     
 
 
+    <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_target -->
+
+    <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_target">
+        <rdfs:domain rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Diagnosis"/>
+        <rdfs:range rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://nemo.inf.ufes.br/OntoQSAR.owl#has_inhibitor -->
 
     <owl:ObjectProperty rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#has_inhibitor">
@@ -1451,6 +1460,12 @@
 
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Diagnosis">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#has_biological_target"/>
+                <owl:someValuesFrom rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Target"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">In pathology, the process of distinguishing one disease from another. The determination of a disease from its signs, symptoms, etiology, pathogenesis, physiopathology, morphopathology, etc. Source: https://link.springer.com/referenceworkentry/10.1007/0-306-48380-7_1218</rdfs:comment>
         <rdfs:label xml:lang="en">Diagnosis</rdfs:label>
         <rdfs:label xml:lang="pt">Diagnóstico</rdfs:label>
@@ -2362,34 +2377,6 @@
     <owl:Class rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#hydrogen_bond_donnors_count(using_Lipinski’s_definition)">
         <rdfs:subClassOf rdf:resource="http://nemo.inf.ufes.br/OntoQSAR.owl#hydrogen_bond_donors_count"/>
     </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Algorithm"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Assay_method"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Biological_Activity"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Chemical_Descriptor"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Diagnosis"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Functional_Group_Descriptor"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Inhibitor"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacokinetics"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Pharmacophoric_Group"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Publication"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Quantum_Chemistry_Computational_Method"/>
-            <rdf:Description rdf:about="http://nemo.inf.ufes.br/OntoQSAR.owl#Validation"/>
-        </owl:members>
-    </rdf:Description>
 </rdf:RDF>
 
 
